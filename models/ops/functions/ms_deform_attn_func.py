@@ -8,7 +8,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # ------------------------------------------------------------------------
 
-
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import division
@@ -62,3 +61,4 @@ def ms_deform_attn_core_pytorch(value, value_spatial_shapes, sampling_locations,
     attention_weights = attention_weights.transpose(1, 2).reshape(N_*M_, 1, Lq_, L_*P_)
     output = (torch.stack(sampling_value_list, dim=-2).flatten(-2) * attention_weights).sum(-1).view(N_, M_*D_, Lq_)
     return output.transpose(1, 2).contiguous()
+
